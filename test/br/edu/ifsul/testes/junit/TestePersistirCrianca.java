@@ -48,7 +48,7 @@ public class TestePersistirCrianca {
             c.setNascimento(Calendar.getInstance());
             c.setSexo("Feminino");
             c.setNomePais("Anderson, Lisandra");
-            c.setUsuario(em.find(Usuario.class, 4));
+            c.setUsuario(em.find(Usuario.class, 1));
             em.getTransaction().begin();
             em.persist(c);
             em.getTransaction().commit();
