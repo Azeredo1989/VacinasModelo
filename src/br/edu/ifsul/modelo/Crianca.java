@@ -34,7 +34,7 @@ import org.hibernate.validator.constraints.NotBlank;
  * @author Anderson
  */
 @Entity
-@Table(name = "crianca")
+    
 public class Crianca implements Serializable{
     @Id
     @SequenceGenerator(name = "seq_crianca", sequenceName = "seq_crianca_id",allocationSize = 1)
@@ -94,6 +94,7 @@ public class Crianca implements Serializable{
     public void removeVacinacao(int index){
         this.vacinacao.remove(index);
     }
+    
 
     public Integer getId() {
         return id;
