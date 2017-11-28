@@ -44,24 +44,22 @@ public class Vacinacao implements Serializable{
     
     @Column(name = "data_previsao", nullable = false)
     @Temporal(value = TemporalType.DATE)
-    @NotNull(message = "A data de previsão não pode ser nulo")
+    @NotNull(message = "A data de previsão não pode ser nula")
     private Calendar data_previsao;
     
     @Column(name = "data_realizacao", nullable = false)
     @Temporal(value = TemporalType.DATE)
-    //@NotNull(message = "A data de realização não pode ser nulo")
+    
     private Calendar data_realizacao;
     
     @Column(name = "unidade", nullable = false, length = 100)
     @Length(max = 100, message = "A unidade não pode ter mais de {max} caracteres")
-    //@NotNull(message = "A unidade não pode ser nulo")
-    //@NotBlank(message = "A unidade deve ser informado")
+    
     private String unidade;
     
     @Column(name = "profissional", nullable = false, length = 150)
     @Length(max = 150, message = "O profissional não pode ter mais de {max} caracteres")
-    //@NotNull(message = "O profissional não pode ser nulo")
-    //@NotBlank(message = "O profissional deve ser informado")
+    
     private String profissional;
     
     @NotNull(message = "A Criança deve ser informada")

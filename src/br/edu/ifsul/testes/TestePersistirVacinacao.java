@@ -7,6 +7,7 @@ package br.edu.ifsul.testes;
 
 
 
+import br.edu.ifsul.modelo.Crianca;
 import br.edu.ifsul.modelo.Vacinacao;
 import java.util.Calendar;
 import javax.persistence.EntityManager;
@@ -26,11 +27,12 @@ public class TestePersistirVacinacao {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("VACINAModelPU");
         EntityManager em = emf.createEntityManager();
         Vacinacao v = new Vacinacao();
-        v.setNome("pneumococica conjugada");
+        v.setNome("Gripe");
         v.setData_previsao(Calendar.getInstance());
         v.setData_realizacao(Calendar.getInstance());
         v.setUnidade("UBS");
         v.setProfissional("Mariana");
+        v.setCrianca(em.find(Crianca.class, 1));
         em.getTransaction().begin();
         em.persist(v);
         em.getTransaction().commit();
