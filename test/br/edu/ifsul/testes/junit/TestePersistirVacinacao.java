@@ -8,6 +8,7 @@ package br.edu.ifsul.testes.junit;
 
 import br.edu.ifsul.jpa.EntityManagerUtil;
 import br.edu.ifsul.modelo.Crianca;
+import br.edu.ifsul.modelo.Vacina;
 import br.edu.ifsul.modelo.Vacinacao;
 import java.util.Calendar;
 import javax.persistence.EntityManager;
@@ -45,11 +46,12 @@ public class TestePersistirVacinacao {
             Crianca c = em.find(Crianca.class, 5);
             Vacinacao v = new Vacinacao();
             v.setNome("Gripe");
-            v.setProfissional("");
-            v.setUnidade("");
+            v.setProfissional("Teste");
+            v.setUnidade("Cais Hipica");
             v.setData_previsao(Calendar.getInstance());
-//            v.setData_realizacao(Calendar.getInstance());
+            v.setData_realizacao(Calendar.getInstance());
             v.setCrianca(em.find(Crianca.class, 1));
+            v.setVacina(em.find(Vacina.class, 1));
             c.adicionarVacinacao(v);
             em.getTransaction().begin();
             em.persist(c);
