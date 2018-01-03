@@ -38,28 +38,26 @@ public class Vacinacao implements Serializable{
     
     @Column(name = "nome", nullable = false, length = 150)
     @Length(max = 150, message = "O nome não pode ter mais de {max} caracteres")
-    @NotNull(message = "O nome não pode ser nulo")
+//  @NotNull(message = "O nome não pode ser nulo")
     @NotBlank(message = "O nome deve ser informado")
     private String nome;
     
     @Column(name = "data_previsao", nullable = false)
     @Temporal(value = TemporalType.DATE)
-    @NotNull(message = "A data de previsão não pode ser nula")
+//    @NotNull(message = "A data de previsão não pode ser nula")
     private Calendar data_previsao;
     
-    @Column(name = "data_realizacao", nullable = false)
-    @Temporal(value = TemporalType.DATE)
-    
+//    @Column(name = "data_realizacao")
+//    @Temporal(value = TemporalType.DATE)
     private Calendar data_realizacao;
     
-    @Column(name = "unidade", nullable = false, length = 100)
-    @Length(max = 100, message = "A unidade não pode ter mais de {max} caracteres")
+//    @Column(name = "unidade",  length = 100)
+//    @Length(max = 100, message = "A unidade não pode ter mais de {max} caracteres")
     
     private String unidade;
     
-    @Column(name = "profissional", nullable = false, length = 150)
-    @Length(max = 150, message = "O profissional não pode ter mais de {max} caracteres")
-    
+//    @Column(name = "profissional", length = 150)
+//    @Length(max = 150, message = "O profissional não pode ter mais de {max} caracteres")
     private String profissional;
     
     @NotNull(message = "A Criança deve ser informada")
@@ -67,6 +65,12 @@ public class Vacinacao implements Serializable{
     @JoinColumn(name = "crianca_id", referencedColumnName = "id", nullable = false)
     @ForeignKey(name = "fk_crianca_id")
     private Crianca crianca;
+    
+    @NotNull(message = "A vacina deve ser informada")
+    @ManyToOne
+    @JoinColumn(name = "vacina_id", referencedColumnName = "id", nullable = false)
+    @ForeignKey(name = "fk_vacina_id")
+    private Vacina vacina;
 
     public Vacinacao() {
         
@@ -194,6 +198,20 @@ public class Vacinacao implements Serializable{
      */
     public void setCrianca(Crianca crianca) {
         this.crianca = crianca;
+    }
+
+    /**
+     * @return the vacina
+     */
+    public Vacina getVacina() {
+        return vacina;
+    }
+
+    /**
+     * @param vacina the vacina to set
+     */
+    public void setVacina(Vacina vacina) {
+        this.vacina = vacina;
     }
     
     
