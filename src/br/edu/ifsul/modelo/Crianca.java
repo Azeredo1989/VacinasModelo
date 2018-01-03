@@ -39,32 +39,27 @@ public class Crianca implements Serializable{
     @Id
     @SequenceGenerator(name = "seq_crianca", sequenceName = "seq_crianca_id",allocationSize = 1)
     @GeneratedValue(generator = "seq_crianca", strategy = GenerationType.SEQUENCE)
-    private Integer id;
-    
+    private Integer id;  
     @NotBlank(message = "O nome deve ser informado")
     @NotNull(message = "O nome nã pode ser nulo")
     @Length(max = 100, message = "O nome não pode ter mais de {max} caracteres")
     @Column(name = "nome", nullable = false, length = 100)
     private String nome;
-    
     @Temporal(value = TemporalType.DATE)
     //@NotBlank(message = "O nascimento deve ser informado")
     @NotNull(message = "O nascimento não pode ser nulo")
     @Column(name = "nascimento", nullable = false)
     private Calendar nascimento;
-    
     @NotNull(message = "Sexo não pode ser nulo")
     @NotBlank(message = "Sexo deve ser informado")
     @Length(max = 15, message = "Sexo não deve ter mais do que {max} caracteres")
     @Column(name = "sexo", nullable = false, length = 15)
     private String sexo;
-    
     @NotBlank(message = "O nome dos pais deve ser informado")
     @NotNull(message = "O nome dos pais não pode ser nulo")
     @Length(max = 200, message = "O nome dos pais não deve ter mais de {max}caracteres")
     @Column(name = "nomePais", nullable = false, length = 200)
     private String nomePais;
-    
     @ManyToOne
     @JoinColumn(name = "usuario", referencedColumnName = "id", nullable = false)
     @ForeignKey(name = "fk_usuario")
